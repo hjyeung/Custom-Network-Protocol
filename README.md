@@ -26,10 +26,10 @@ Our TCP Reno implementation shares similarities with TCP Tahoe, including sendin
 Our custom protocol combines the higher throughput of TCP Reno with the lower average packet delay of the Stop and Wait protocol. Instead of only resetting the window size during a fast retransmit or timeout, it is also reset when the delay for a received packet is larger than a specified value. This value is determined when the program is run, by sending the first 10 packets using the Stop and Wait protocol and returning the maximimum delay multipled by 1.25. This method ensures the average packet delay will always be less than the specified maximimum value while simultaneously allowing us to achieve a ~6x throughput improvement than if the regular Stop and Wait protocol was used.
 
 ## Performance analysis
-| Protocol             | Average Throughput      | Average Packet Delay |
-| -------------------- | ----------------------- | -------------------- |
-| Stop and Wait        | 9,709.44 bits / second  | 0.10 seconds         |
-| Fixed Sliding Window | 85,292.01 bits / second | 1.18 seconds         |
-| TCP Tahoe            | 69,051.64 bits / second | 0.59 seconds         |
-| TCP Reno             | 81,582.78 bits / second | 0.62 seconds         |
-| Custom TCP           | 63,412.07 bits / second | 0.18 seconds         |
+| Protocol             | Average Throughput      | Average Packet Delay | Performance Metric |
+| -------------------- | ----------------------- | -------------------- | ------------------ |
+| Stop and Wait        | 9,709.44 bits / second  | 0.10 seconds         | 97,094.4           |
+| Fixed Sliding Window | 85,292.01 bits / second | 1.18 seconds         | 72,281.36          |
+| TCP Tahoe            | 69,051.64 bits / second | 0.59 seconds         | 117,036.68         |
+| TCP Reno             | 81,582.78 bits / second | 0.62 seconds         | 131,585.13         |
+| Custom TCP           | 63,412.07 bits / second | 0.18 seconds         | 352,289.28         |
